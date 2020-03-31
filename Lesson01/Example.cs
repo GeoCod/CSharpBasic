@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using static View;
 
 public class Example
 {
+    /// <summary>
+    /// Определяет максимальное из трех чисел
+    /// </summary>
     public void MaxNumber()
     {
         Print("Введите первое число");
@@ -16,35 +20,73 @@ public class Example
 
         Print("----------------------");
 
-        int maxNumber = 0;
-
-        if (firstNumber > secondNumber)
-        {
-            if (firstNumber > thirdNumber)
-            {
-                maxNumber = firstNumber;
-            }
-            else
-            {
-                maxNumber = thirdNumber;
-            }
-        }
-        else
-        {
-            if (secondNumber > thirdNumber)
-            {
-                maxNumber = secondNumber;
-            }
-            else
-            {
-                maxNumber = thirdNumber;
-            }
-        }
-
-        //int maxNumber = firstNumber > secondNumber ? firstNumber : secondNumber;
-        Print(maxNumber);
+        int maxNumber = firstNumber > secondNumber ? firstNumber : secondNumber;
+        maxNumber = maxNumber > thirdNumber ? maxNumber : thirdNumber;
+        Print($"Максимальное число: {maxNumber}");
     }
 
+    /// <summary>
+    /// Подсчет количества цифр введенного числа
+    /// </summary>
+    public void countNumeric ()
+    {
+        Print("Введите целое число:");
+        int count = GetInt().ToString().Length;
+        Print($"Число состоить из {count} цифр");
+
+        /* первая задумка. Но понял, что повторяется код GetInt
+            bool isNum = int.TryParse(text, out int Num);
+            do
+            {
+                int count = text.Length;
+                Print($"Число состоить из {count} цифр");
+            } while (isNum);
+        */
+    }
+
+    /// <summary>
+    /// Сумма нечетных положительных чисел
+    /// </summary>
+    public void sumUneven ()
+    {
+        List<int> numList = new List<int>();
+        int num;
+        do
+        {
+            Print("Введите целое число:");
+            num = GetInt();
+            numList.Add(num);
+        } while (num != 0);
+        
+        int sum = 0;
+        for(int i = 0; i < numList.Count; i++)
+        {
+            sum = isUneven(numList[i]) && numList[i] > 0 ? sum += numList[i] : sum;
+        }
+        Print($"Сумма положительных нечетных чисел: {sum}");
+    }
+
+    /// <summary>
+    /// Сумма нечетных положительных чисел через рекурсию
+    /// </summary>
+    public void sumUneven2()
+    {
+        Print("Введите целое число:");
+        int num = GetInt();
+        int sum = 0;
+        if(num != 0)
+        {
+            if(isUneven(num) && num > 0)
+            {
+                sum += num;
+            }
+            sumUneven2();
+        }
+        Print($"Сумма положительных нечетных чисел: {sum}");
+    }
+
+
+    #region Примеры из урока
     public void ExampleIf()
     {
         // && и
@@ -191,4 +233,5 @@ public class Example
             isNumber = Int32.TryParse(GetString(), out number);
         } while (!isNumber);
     }
+    #endregion
 }

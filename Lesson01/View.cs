@@ -20,8 +20,36 @@ public static class View
 
     public static int GetInt()
     {
-        //return Int32.TryParse(GetString());
-        return Int32.Parse(GetString());
+        //обернуть его, что бы пользователь не выстрелил себе в ногу...
+        bool verification;
+        int number;
+        do
+        {
+            verification = Int32.TryParse(GetString(), out number);
+            if (!verification)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Print("Введите целое число:");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        } while (!verification);
+        return number;
+    }
+
+    /// <summary>
+    /// Проверяет является ли число четным
+    /// </summary>
+    public static bool isEven(int num)
+    {
+        return num % 2 == 0;
+    }
+
+    /// <summary>
+    /// Проверяет является ли число нечетным
+    /// </summary>
+    public static bool isUneven(int num)
+    {
+        return num % 2 != 0;
     }
 
     public static double GetDouble()
