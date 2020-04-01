@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using static System.Console;
 
 public static class View
@@ -54,6 +55,8 @@ public static class View
 
     public static double GetDouble()
     {
-        return Double.Parse(GetString().Replace('.', ','));
+        double d = double.Parse(GetString().Replace(",", "."), CultureInfo.InvariantCulture);
+        return d;
+        //return Double.Parse(GetString().Replace('.', ','));
     }
 }
