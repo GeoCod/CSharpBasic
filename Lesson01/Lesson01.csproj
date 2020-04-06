@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calc.cs" />
+    <Compile Include="Exampl\Complex.cs" />
     <Compile Include="Exampl\Example.cs" />
     <Compile Include="Exampl\LevelSelection.cs" />
     <Compile Include="Login.cs" />

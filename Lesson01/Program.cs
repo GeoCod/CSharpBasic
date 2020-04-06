@@ -1,10 +1,54 @@
-﻿using static View;
+﻿using System;
+using static View;
 
 public class Program
 {
     private static void Main()
+    //Васильченко Артем
     {
-        //Васильченко Артем
+        #region Урок 3
+        
+        void ComplexStruct()
+        {
+            ComplexStruct complex1;
+            complex1.re = 1;
+            complex1.im = 1;
+
+            ComplexStruct complex2;
+            complex2.re = 2;
+            complex2.im = 2;
+
+            ComplexStruct result = complex1.Plus(complex2);
+            Console.WriteLine(result.ToString());
+            result = complex1.Multi(complex2);
+            Console.WriteLine(result.ToString());
+        }
+
+
+        void ComplexClass()
+        {
+            ComplexClass complex1 = new ComplexClass();
+            complex1.re = 1;
+            complex1.im = 1;
+
+            ComplexClass complex2 = new ComplexClass();
+            complex2.re = 2;
+            complex2.im = 2;
+
+            ComplexClass result = complex1.Plus(complex2);
+            Console.WriteLine(result.ToString());
+        }
+
+        ComplexStruct();
+        ComplexClass();
+        Pause();
+        return;
+
+        #endregion
+
+
+
+ 
         Calc calc = new Calc();
 
         //1. Написать метод, возвращающий минимальное из трёх чисел.
