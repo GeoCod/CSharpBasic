@@ -44,9 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calc.cs" />
-    <Compile Include="Exampl\Complex.cs" />
+    <Compile Include="Complex.cs" />
     <Compile Include="Exampl\Example.cs" />
     <Compile Include="Exampl\LevelSelection.cs" />
+    <Compile Include="FractionalNumber.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MassIndex.cs" />
     <Compile Include="Program.cs" />

@@ -21,7 +21,6 @@ public static class View
 
     public static int GetInt()
     {
-        //обернуть его, что бы пользователь не выстрелил себе в ногу...
         bool verification;
         int number;
         do
