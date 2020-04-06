@@ -7,7 +7,32 @@ public class Program
     //Васильченко Артем
     {
         #region Урок 3
-        
+        /*
+        3.	*Описать класс дробей — рациональных чисел, являющихся отношением двух целых чисел.Предусмотреть методы сложения, вычитания, умножения и деления дробей. 
+        Написать программу, демонстрирующую все разработанные элементы класса.
+        * Добавить свойства типа int для доступа к числителю и знаменателю;
+        * Добавить свойство типа double только на чтение, чтобы получить десятичную дробь числа;
+        ** Добавить проверку, чтобы знаменатель не равнялся 0. Выбрасывать исключение ArgumentException("Знаменатель не может быть равен 0");
+        *** Добавить упрощение дробей.
+        */
+
+        ComplexStruct();
+        Print("-------------");
+        ComplexClass();
+        Print("-------------");
+        SumUneven();
+        Print("-------------");
+        Pause();
+        return;
+
+        void SumUneven()
+        {
+            // 2.а)  С клавиатуры вводятся числа, пока не будет введён 0(каждое число в новой строке).
+            // Требуется подсчитать сумму всех нечётных положительных чисел.Сами числа и сумму вывести на экран, используя tryParse.
+            Calc calc2 = new Calc();
+            calc2.sumUneven();
+        }
+
         void ComplexStruct()
         {
             ComplexStruct complex1;
@@ -20,35 +45,78 @@ public class Program
 
             ComplexStruct result = complex1.Plus(complex2);
             Console.WriteLine(result.ToString());
+
             result = complex1.Multi(complex2);
             Console.WriteLine(result.ToString());
+
+            // 1. а) Дописать структуру Complex, добавив метод вычитания комплексных чисел.Продемонстрировать работу структуры.
+            ComplexStruct result2 = complex2.Minus(complex1);
+            Console.WriteLine(result2.ToString());
         }
 
 
         void ComplexClass()
         {
-            ComplexClass complex1 = new ComplexClass();
-            complex1.re = 1;
-            complex1.im = 1;
+            // 1.б) Дописать класс Complex, добавив методы вычитания и произведения чисел.Проверить работу класса.
+            // 1.в) Добавить диалог с использованием switch демонстрирующий работу класса.
 
-            ComplexClass complex2 = new ComplexClass();
-            complex2.re = 2;
-            complex2.im = 2;
+            // Описали ссылку на объект.
+            ComplexClass complex1;
+            // Создали объект и сохранили ссылку на него в complex1.
+            complex1 = new ComplexClass(1, 1);
+            // Описали объект и создали его.
+            ComplexClass complex2 = new ComplexClass(2, 2);
+            // С помощью свойства Im изменили внутреннее (приватное) поле im.
+            //complex2.Im = 3;
+            // Создали ссылку на объект.
+            ComplexClass result;
+            // Так как в методе Plus создается новый объект,
+            // в result сохраняем ссылку на вновь созданный объект.
 
-            ComplexClass result = complex1.Plus(complex2);
+            /*
+            result = complex1.Plus(complex2);
+            Console.WriteLine(result.ToString());
+
+            ComplexClass result2;
+            result2 = complex1.Multi(complex2);
+            Console.WriteLine(result2.ToString());
+
+            ComplexClass result3;
+            result3 = complex1.Minus(complex2);
+            Console.WriteLine(result3.ToString());
+            */
+
+            Console.WriteLine("Для сложения чисел введите - 1, вычитания - 2, умножения - 3:");
+            result = null;
+            string switchCase = Console.ReadLine();
+            switch (switchCase)
+            {
+                case "1":
+                    {
+                        result = complex1.Plus(complex2);
+                        break;
+                    }
+                case "2":
+                    {
+                        result = complex1.Multi(complex2);
+                        break;
+                    }
+                case "3":
+                    {
+                        result = complex1.Minus(complex2);
+                        break;
+                    }
+                default:
+                    break;
+            }
             Console.WriteLine(result.ToString());
         }
-
-        ComplexStruct();
-        ComplexClass();
-        Pause();
-        return;
 
         #endregion
 
 
 
- 
+
         Calc calc = new Calc();
 
         //1. Написать метод, возвращающий минимальное из трёх чисел.
