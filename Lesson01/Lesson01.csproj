@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyArray.cs" />
     <Compile Include="Calc.cs" />
     <Compile Include="Complex.cs" />
     <Compile Include="Exampl\Example.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="FractionalNumber.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MassIndex.cs" />
+    <Compile Include="MyArray2d.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exampl\View.cs" />
