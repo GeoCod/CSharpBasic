@@ -1,8 +1,4 @@
-﻿using System;
-using static View;
-
-
-public class Login
+﻿public class Login
 {
     /* Урок 2. Задание 4.
      Реализовать метод проверки логина и пароля.
@@ -12,12 +8,45 @@ public class Login
      программа пропускает его дальше или не пропускает.
      С помощью цикла do while ограничить ввод пароля тремя попытками.
      */
-     public bool Authorization(string login, string pass)
+    public bool Authorization(string login, string pass)
     {
         string validLogin = "root";
         string validPassword = "GeekBrains";
         bool verifi = login == validLogin && pass == validPassword ? true : false;
         return verifi;
     }
+
+    /* Урок 5. Задание 1
+    1.	Создать программу, которая будет проверять корректность ввода логина. Корректным логином будет строка от 2 до 10 символов, содержащая только буквы латинского алфавита или цифры, при этом цифра не может быть первой:
+    а) без использования регулярных выражений;
+    б) **с использованием регулярных выражений.
+    */
+    /// <summary>
+    /// Проверка корректности пароля без регулярынх выражений
+    /// </summary>
+    /// <param name="login">Проверяемый логин</param>
+    public bool PasswordCheck(string login)
+    {
+        bool check = false;
+        if (login == null) return check;
+
+        char[] sym = login.ToCharArray();
+        foreach (char c in sym)
+        {
+            check = (char.IsLetter(c) || char.IsNumber(c)) ? true : false;
+            if (!check) break;
+        }
+        return check;
+    }
+
+    /// <summary>
+    /// Проверка корректности пароля c регулярными выражениями
+    /// </summary>
+    /// <param name="login">Проверяемый логин</param>
+/*    public bool PasswordCheckRegex(string login)
+    {
+
+    }*/
+
 }
 
