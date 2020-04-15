@@ -21,8 +21,17 @@ public class Program
         if (login.PasswordCheck(Console.ReadLine()))
             Print("Корректный");
         else
+            Print("Ошибка\n");
+        Pause();
+
+        Console.WriteLine("Задание 1.б");
+        Console.WriteLine("Введите логин:");
+        if (login.PasswordCheckRegex(Console.ReadLine()))
+            Print("Корректный");
+        else
             Print("Ошибка");
         Pause();
+        
 
         return;
         StreamReader sr = new StreamReader("data.txt");

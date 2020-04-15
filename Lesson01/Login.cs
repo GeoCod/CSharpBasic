@@ -1,4 +1,6 @@
-﻿public class Login
+﻿using System.Text.RegularExpressions;
+
+public class Login
 {
     /* Урок 2. Задание 4.
      Реализовать метод проверки логина и пароля.
@@ -43,10 +45,16 @@
     /// Проверка корректности пароля c регулярными выражениями
     /// </summary>
     /// <param name="login">Проверяемый логин</param>
-/*    public bool PasswordCheckRegex(string login)
+    public bool PasswordCheckRegex(string login)
     {
+        bool check;
+        Regex regex = new Regex("^[a-zA-Zа-яА-Я][a-zA-Zа-яА-Я0-9]{2,9}$");
+        return check = regex.Match(login).Success;
 
-    }*/
+        //string pattern = "^[a-zA-Zа-яА-Я][a-zA-Zа-яА-Я0-9]{2,9}$";    //второй вариант
+        //check = Regex.Match(login, pattern).Success;
+        //return check;
+    }
 
 }
 
