@@ -13,14 +13,6 @@ public class Program
     private static void Main()
     //Васильченко Артем
     {
-        Delegate dg = new Delegate();
-        dg.Function()
-
-        Console.ReadKey();
-
-
-
-
 
         void Lesson05()
         {

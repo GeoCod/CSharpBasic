@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Delegate.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MyArray.cs" />
     <Compile Include="Calc.cs" />
