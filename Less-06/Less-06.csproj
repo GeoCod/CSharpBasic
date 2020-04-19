@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ABD6EA5B-CAB2-4C62-86F2-D367ECD5EE9F}</ProjectGuid>
+    <ProjectGuid>{B3FFC1E5-8AA7-4BB3-810C-A2C271D282DE}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lesson01</RootNamespace>
-    <AssemblyName>Lesson01</AssemblyName>
+    <RootNamespace>Less_06</RootNamespace>
+    <AssemblyName>Less-06</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,24 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Delegate.cs" />
-    <Compile Include="Message.cs" />
-    <Compile Include="MyArray.cs" />
-    <Compile Include="Calc.cs" />
-    <Compile Include="Complex.cs" />
-    <Compile Include="Exampl\Example.cs" />
-    <Compile Include="Exampl\LevelSelection.cs" />
-    <Compile Include="FractionalNumber.cs" />
-    <Compile Include="Login.cs" />
-    <Compile Include="MassIndex.cs" />
-    <Compile Include="MyArray2d.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Exampl\View.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

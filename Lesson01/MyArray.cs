@@ -6,7 +6,7 @@ class MyArray
 {
     #region Fields
 
-    int[] Mass;
+    int[] _mass;
     #endregion
 
 
@@ -19,12 +19,12 @@ class MyArray
     /// <param name="size">Количество элементов</param>
     /// <param name="start">Начальное значение</param>
     /// <param name="step">Шаг приращения значений</param>
-    public MyArray(int size, int start, int step, char sym)
+    public MyArray(int size, int start, int step, char sym) : this(size)
     {
-        Mass = new int[size];
+        //_mass = new int[size]; // вместо дублирования вызываем отдельный конструктор
         for (int i = 0; i < size; i++)
         {
-            Mass[i] = start;
+            _mass[i] = start;
             start += step;
         }
     }
@@ -32,15 +32,19 @@ class MyArray
     /// <summary>
     ///  Создание массива и заполнение его случайными числами от min до max
     /// </summary>
-    /// <param name="n">Количество элементов</param>
+    /// <param name="size">Количество элементов</param>
     /// <param name="min">Минимальное значение</param>
     /// <param name="max">Максимальное значение</param>
-    public MyArray(int n, int min, int max)
+    public MyArray(int size, int min, int max) : this(size)
     {
-        Mass = new int[n];
         Random rnd = new Random();
-        for (int i = 0; i < n; i++)
-            Mass[i] = rnd.Next(min, max);
+        for (int i = 0; i < size; i++)
+            _mass[i] = rnd.Next(min, max);
+    }
+
+    public MyArray(int size)
+    {
+        _mass = new int[size];
     }
 
     /// <summary>
@@ -55,11 +59,11 @@ class MyArray
         try
         {
             int N = int.Parse(sr.ReadLine());
-            Mass = new int[N];
+            _mass = new int[N];
             //  Считываем массив
             for (int i = 0; i < N; i++)
             {
-                Mass[i] = int.Parse(sr.ReadLine());
+                _mass[i] = int.Parse(sr.ReadLine());
             }
         }
         finally
@@ -79,7 +83,7 @@ class MyArray
     {
         get
         {
-            return Mass.Length;
+            return _mass.Length;
         }
     }
 
@@ -91,7 +95,7 @@ class MyArray
         get
         {
             double sum = 0;
-            foreach (int el in Mass)
+            foreach (int el in _mass)
                 sum += el;
             return sum;
         }
@@ -104,9 +108,9 @@ class MyArray
     {
         get
         {
-            int max = Mass[0];
-            for (int i = 1; i < Mass.Length; i++)
-                if (Mass[i] > max) max = Mass[i];
+            int max = _mass[0];
+            for (int i = 1; i < _mass.Length; i++)
+                if (_mass[i] > max) max = _mass[i];
             return max;
         }
     }
@@ -118,9 +122,9 @@ class MyArray
     {
         get
         {
-            int min = Mass[0];
-            for (int i = 1; i < Mass.Length; i++)
-                if (Mass[i] < min) min = Mass[i];
+            int min = _mass[0];
+            for (int i = 1; i < _mass.Length; i++)
+                if (_mass[i] < min) min = _mass[i];
             return min;
         }
     }
@@ -133,8 +137,8 @@ class MyArray
         get
         {
             int count = 0;
-            for (int i = 0; i < Mass.Length; i++)
-                if (Mass[i] > 0) count++;
+            for (int i = 0; i < _mass.Length; i++)
+                if (_mass[i] > 0) count++;
             return count;
         }
     }
@@ -149,7 +153,7 @@ class MyArray
     public override string ToString()
     {
         string s = "";
-        foreach (int v in Mass)
+        foreach (int v in _mass)
             s = s + v + " ";
         return s;
     }
@@ -159,26 +163,26 @@ class MyArray
     /// </summary>
     public void BubbleSort()
     {
-        for (int i = 0; i < Mass.Length; i++)
-            for (int j = 0; j < Mass.Length - 1; j++)
-                if (Mass[j] > Mass[j + 1])//Сравниваем соседние элементы
+        for (int i = 0; i < _mass.Length; i++)
+            for (int j = 0; j < _mass.Length - 1; j++)
+                if (_mass[j] > _mass[j + 1])//Сравниваем соседние элементы
                 {
                     //  Обмениваем элементы местами
-                    int t = Mass[j];
-                    Mass[j] = Mass[j + 1];
-                    Mass[j + 1] = t;
+                    int t = _mass[j];
+                    _mass[j] = _mass[j + 1];
+                    _mass[j + 1] = t;
                 }
     }
 
 
     public void Add(int value)
     {
-        if (Mass == null)
+        if (_mass == null)
         {
-            Mass = new int[0];
+            _mass = new int[0];
         }
-        Array.Resize(ref Mass, Mass.Length + 1);
-        Mass[Mass.Length - 1] = value;
+        Array.Resize(ref _mass, _mass.Length + 1);
+        _mass[_mass.Length - 1] = value;
     }
 
     /// <summary>
@@ -186,7 +190,7 @@ class MyArray
     /// </summary>
     public void Print(char s = ' ')
     {
-        foreach (var el in Mass)
+        foreach (var el in _mass)
             Print($"{s}{el}");
     }
 
@@ -220,12 +224,12 @@ class MyArray
     /// <returns>Количество пар массива, в которых только одно число делится на 3</returns>
     public int CountCoupleDivThree()
     {
-        if (Mass == null) return 0;
+        if (_mass == null) return 0;
         int count = 0;
 
-        for (int i = 0; i < Mass.Length - 1; i++)
+        for (int i = 0; i < _mass.Length - 1; i++)
         {
-            if ((isDivisionThree(Mass[i]) && !isDivisionThree(Mass[i + 1])) || (!isDivisionThree(Mass[i]) && isDivisionThree(Mass[i + 1])))
+            if ((isDivisionThree(_mass[i]) && !isDivisionThree(_mass[i + 1])) || (!isDivisionThree(_mass[i]) && isDivisionThree(_mass[i + 1])))
             {
                 count++;
             }
@@ -240,16 +244,16 @@ class MyArray
 
     public int[] Inverse()
     {
-        int[] arr = new int[Mass.Length];
-        for (int i = 0; i < Mass.Length; i++)
-            arr[i] = -Mass[i];
+        int[] arr = new int[_mass.Length];
+        for (int i = 0; i < _mass.Length; i++)
+            arr[i] = -_mass[i];
         return arr;
     }
 
     public void Multi(int num)
     {
-        for (int i = 0; i < Mass.Length; i++)
-            Mass[i] = Mass[i] * num;
+        for (int i = 0; i < _mass.Length; i++)
+            _mass[i] = _mass[i] * num;
     }
     #endregion
 
