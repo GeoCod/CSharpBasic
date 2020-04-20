@@ -109,7 +109,8 @@ namespace Less_07
         // б) **Реализовать отдельную форму c TextBox для ввода числа.
         private void guessNumTSM_Click(object sender, EventArgs e)
         {
-
+            FormGuess fmGues = new FormGuess();
+            fmGues.ShowDialog();
         }
     }
 }
